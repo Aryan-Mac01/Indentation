@@ -85,7 +85,7 @@ export class Service{
             console.log("Appwrite Service :: listPost :: error", error);
             return false;
         }
-    }
+    } 
 
     //file upload service
     async fileUpload(file){
