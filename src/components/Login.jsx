@@ -5,6 +5,7 @@ import {Button, Input, Logo} from './index'
 import { useDispatch } from 'react-redux'
 import authService from '../appwrite/auth'
 import { useForm } from 'react-hook-form'
+import match from 'nodemon/lib/monitor/match'
 
 function Login() {
     const navigate = useNavigate()
@@ -48,7 +49,33 @@ function Login() {
             </p>
             {error && <p className='text-red-600 mt-8 text-center'>{error}</p>}
             <form onSubmit={handleSubmit(login)} className='mt-8'>
-                <div className='space-y-5'></div>
+                <div className='space-y-5'>
+                    <Input 
+                        label="Email:"
+                        placeholder = "Enter your email"
+                        type= "email"
+                        {...register("email", {
+                            required: true,
+                            validate: {
+                                matchPattern : (value) => /^([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}$/.test(value) || "Email address must be a valid address"
+                            }
+                        })}
+                    />
+                    <Input
+                    label = "Password"
+                    type = "password"
+                    placeholder = "Enter password"
+                    {...register("password", {
+                        required: true,
+                    })}
+                    />
+                    <Button
+                    type="submit"
+                    className="w-full" //36.06
+                    >
+                        Sign In
+                    </Button>
+                </div>
             </form>
         </div>
     </div>
