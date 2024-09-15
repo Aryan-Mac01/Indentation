@@ -71,7 +71,7 @@ function Login() {
                     />
                     <Button
                     type="submit"
-                    className="w-full" //36.06
+                    className="w-full" 
                     >
                         Sign In
                     </Button>
